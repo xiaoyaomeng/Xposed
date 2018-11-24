@@ -336,25 +336,25 @@ jbyteArray ZSa_readFile(JNIEnv* env, jclass, jstring filenameJ) {
 
 int register_natives_XposedBridge(JNIEnv* env, jclass clazz) {
     const JNINativeMethod methods[] = {
-        NATIVE_METHOD(XposedBridge, hadInitErrors, "()Z"),
-        NATIVE_METHOD(XposedBridge, getStartClassName, "()Ljava/lang/String;"),
-        NATIVE_METHOD(XposedBridge, getRuntime, "()I"),
-        NATIVE_METHOD(XposedBridge, startsSystemServer, "()Z"),
-        NATIVE_METHOD(XposedBridge, getXposedVersion, "()I"),
-        NATIVE_METHOD(XposedBridge, initXResourcesNative, "()Z"),
-        NATIVE_METHOD(XposedBridge, hookMethodNative, "(Ljava/lang/reflect/Member;Ljava/lang/Class;ILjava/lang/Object;)V"),
-        NATIVE_METHOD(XposedBridge, setObjectClassNative, "(Ljava/lang/Object;Ljava/lang/Class;)V"),
-        NATIVE_METHOD(XposedBridge, dumpObjectNative, "(Ljava/lang/Object;)V"),
-        NATIVE_METHOD(XposedBridge, cloneToSubclassNative, "(Ljava/lang/Object;Ljava/lang/Class;)Ljava/lang/Object;"),
-        NATIVE_METHOD(XposedBridge, removeFinalFlagNative, "(Ljava/lang/Class;)V"),
+        NATIVE_METHOD(XB, hadInitErrors, "()Z"),
+        NATIVE_METHOD(XB, getStartClassName, "()Ljava/lang/String;"),
+        NATIVE_METHOD(XB, getRuntime, "()I"),
+        NATIVE_METHOD(XB, startsSystemServer, "()Z"),
+        NATIVE_METHOD(XB, getXposedVersion, "()I"),
+        NATIVE_METHOD(XB, initXResourcesNative, "()Z"),
+        NATIVE_METHOD(XB, hookMethodNative, "(Ljava/lang/reflect/Member;Ljava/lang/Class;ILjava/lang/Object;)V"),
+        NATIVE_METHOD(XB, setObjectClassNative, "(Ljava/lang/Object;Ljava/lang/Class;)V"),
+        NATIVE_METHOD(XB, dumpObjectNative, "(Ljava/lang/Object;)V"),
+        NATIVE_METHOD(XB, cloneToSubclassNative, "(Ljava/lang/Object;Ljava/lang/Class;)Ljava/lang/Object;"),
+        NATIVE_METHOD(XB, removeFinalFlagNative, "(Ljava/lang/Class;)V"),
 #if PLATFORM_SDK_VERSION >= 21
-        NATIVE_METHOD(XposedBridge, invokeOriginalMethodNative,
+        NATIVE_METHOD(XB, invokeOriginalMethodNative,
             "!(Ljava/lang/reflect/Member;I[Ljava/lang/Class;Ljava/lang/Class;Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;"),
-        NATIVE_METHOD(XposedBridge, closeFilesBeforeForkNative, "()V"),
-        NATIVE_METHOD(XposedBridge, reopenFilesAfterForkNative, "()V"),
+        NATIVE_METHOD(XB, closeFilesBeforeForkNative, "()V"),
+        NATIVE_METHOD(XB, reopenFilesAfterForkNative, "()V"),
 #endif
 #if PLATFORM_SDK_VERSION >= 24
-        NATIVE_METHOD(XposedBridge, invalidateCallersNative, "([Ljava/lang/reflect/Member;)V"),
+        NATIVE_METHOD(XB, invalidateCallersNative, "([Ljava/lang/reflect/Member;)V"),
 #endif
     };
     return env->RegisterNatives(clazz, methods, NELEM(methods));
@@ -369,9 +369,9 @@ int register_natives_XResources(JNIEnv* env, jclass clazz) {
 
 int register_natives_ZygoteService(JNIEnv* env, jclass clazz) {
     const JNINativeMethod methods[] = {
-        NATIVE_METHOD(ZygoteService, checkFileAccess, "(Ljava/lang/String;I)Z"),
-        NATIVE_METHOD(ZygoteService, statFile, "(Ljava/lang/String;)L" CLASS_FILE_RESULT ";"),
-        NATIVE_METHOD(ZygoteService, readFile, "(Ljava/lang/String;)[B"),
+        NATIVE_METHOD(ZSa, checkFileAccess, "(Ljava/lang/String;I)Z"),
+        NATIVE_METHOD(ZSa, statFile, "(Ljava/lang/String;)L" CLASS_FILE_RESULT ";"),
+        NATIVE_METHOD(ZSa, readFile, "(Ljava/lang/String;)[B"),
     };
     return env->RegisterNatives(clazz, methods, NELEM(methods));
 }
