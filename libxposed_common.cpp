@@ -147,23 +147,23 @@ void onVmCreatedCommon(JNIEnv* env) {
 // JNI methods
 ////////////////////////////////////////////////////////////
 
-jboolean XposedBridge_hadInitErrors(JNIEnv*, jclass) {
+jboolean XB_hadInitErrors(JNIEnv*, jclass) {
     return !xposedLoadedSuccessfully;
 }
 
-jobject XposedBridge_getStartClassName(JNIEnv* env, jclass) {
+jobject XB_getStartClassName(JNIEnv* env, jclass) {
     return env->NewStringUTF(xposed->startClassName);
 }
 
-jboolean XposedBridge_startsSystemServer(JNIEnv*, jclass) {
+jboolean XB_startsSystemServer(JNIEnv*, jclass) {
     return xposed->startSystemServer;
 }
 
-jint XposedBridge_getXposedVersion(JNIEnv*, jclass) {
+jint XB_getXposedVersion(JNIEnv*, jclass) {
     return xposed->xposedVersionInt;
 }
 
-jboolean XposedBridge_initXResourcesNative(JNIEnv* env, jclass) {
+jboolean XB_initXResourcesNative(JNIEnv* env, jclass) {
     classXResources = env->FindClass(CLASS_XRESOURCES);
     if (classXResources == NULL) {
         ALOGE("Error while loading XResources class '%s':", CLASS_XRESOURCES);
@@ -200,7 +200,7 @@ jboolean XposedBridge_initXResourcesNative(JNIEnv* env, jclass) {
     return true;
 }
 
-void XResources_rewriteXmlReferencesNative(JNIEnv* env, jclass,
+void XR_rewriteXmlReferencesNative(JNIEnv* env, jclass,
             jlong parserPtr, jobject origRes, jobject repRes) {
 
     using namespace android;
@@ -269,7 +269,7 @@ void XResources_rewriteXmlReferencesNative(JNIEnv* env, jclass,
 }
 
 
-jboolean ZygoteService_checkFileAccess(JNIEnv* env, jclass, jstring filenameJ, jint mode) {
+jboolean ZSa_checkFileAccess(JNIEnv* env, jclass, jstring filenameJ, jint mode) {
 #if XPOSED_WITH_SELINUX
     ScopedUtfChars filename(env, filenameJ);
     return xposed->zygoteservice_accessFile(filename.c_str(), mode) == 0;
@@ -278,7 +278,7 @@ jboolean ZygoteService_checkFileAccess(JNIEnv* env, jclass, jstring filenameJ, j
 #endif  // XPOSED_WITH_SELINUX
 }
 
-jobject ZygoteService_statFile(JNIEnv* env, jclass, jstring filenameJ) {
+jobject ZSa_statFile(JNIEnv* env, jclass, jstring filenameJ) {
 #if XPOSED_WITH_SELINUX
     ScopedUtfChars filename(env, filenameJ);
 
@@ -299,7 +299,7 @@ jobject ZygoteService_statFile(JNIEnv* env, jclass, jstring filenameJ) {
 #endif  // XPOSED_WITH_SELINUX
 }
 
-jbyteArray ZygoteService_readFile(JNIEnv* env, jclass, jstring filenameJ) {
+jbyteArray ZSa_readFile(JNIEnv* env, jclass, jstring filenameJ) {
 #if XPOSED_WITH_SELINUX
     ScopedUtfChars filename(env, filenameJ);
 

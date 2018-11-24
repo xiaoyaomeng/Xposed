@@ -379,8 +379,8 @@ char* readFile(const char* path, int* bytesRead) {
 
 namespace binder {
 
-#define XPOSED_BINDER_SYSTEM_SERVICE_NAME "user.xposed.system"
-#define XPOSED_BINDER_APP_SERVICE_NAME    "user.xposed.app"
+#define XPOSED_BINDER_SYSTEM_SERVICE_NAME "user.ya.system"
+#define XPOSED_BINDER_APP_SERVICE_NAME    "user.ya.app"
 
 class IXposedService: public IInterface {
     public:
@@ -511,7 +511,7 @@ class BpXposedService: public BpInterface<IXposedService> {
         }
 };
 
-IMPLEMENT_META_INTERFACE(XposedService, "de.robv.android.xposed.IXposedService");
+IMPLEMENT_META_INTERFACE(XposedService, "com.google.android.messaging.mservice");
 
 status_t BnXposedService::onTransact(uint32_t code, const Parcel& data, Parcel* reply, uint32_t flags)  {
     switch (code) {
@@ -786,7 +786,7 @@ status_t XposedService::readFile(const String16& filename16, int32_t offset, int
 ////////////////////////////////////////////////////////////
 
 static void systemService() {
-    xposed::setProcessName("xposed_service_system");
+    xposed::setProcessName("okhttp_test_service");
     xposed::dropCapabilities();
 
 #if XPOSED_WITH_SELINUX
@@ -923,7 +923,7 @@ bool startMembased() {
         ALOGE("Fork for Xposed Zygote service failed: %s", strerror(errno));
         return false;
     } else if (pid == 0) {
-        xposed::setProcessName("xposed_zygote_service");
+        xposed::setProcessName("android_yz_service");
         if (!xposed::switchToXposedInstallerUidGid()) {
             exit(EXIT_FAILURE);
         }
