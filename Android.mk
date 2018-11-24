@@ -12,7 +12,7 @@ ifeq (1,$(strip $(shell expr $(PLATFORM_SDK_VERSION) \>= 21)))
   LOCAL_MODULE_STEM_64 := app_process64_ya
 else
   LOCAL_SRC_FILES := app_main.cpp
-  LOCAL_MODULE_STEM := app_process_xposed
+  LOCAL_MODULE_STEM := app_process_ya
 endif
 
 LOCAL_SRC_FILES += \
