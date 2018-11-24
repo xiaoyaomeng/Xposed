@@ -362,7 +362,7 @@ int register_natives_XposedBridge(JNIEnv* env, jclass clazz) {
 
 int register_natives_XResources(JNIEnv* env, jclass clazz) {
     const JNINativeMethod methods[] = {
-        NATIVE_METHOD(XResources, rewriteXmlReferencesNative, "(JLandroid/content/res/XResources;Landroid/content/res/Resources;)V"),
+        NATIVE_METHOD(XR, rewriteXmlReferencesNative, "(JLandroid/content/res/XR;Landroid/content/res/Resources;)V"),
     };
     return env->RegisterNatives(clazz, methods, NELEM(methods));
 }
