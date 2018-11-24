@@ -8,8 +8,8 @@ include $(CLEAR_VARS)
 ifeq (1,$(strip $(shell expr $(PLATFORM_SDK_VERSION) \>= 21)))
   LOCAL_SRC_FILES := app_main2.cpp
   LOCAL_MULTILIB := both
-  LOCAL_MODULE_STEM_32 := app_process32_xposed
-  LOCAL_MODULE_STEM_64 := app_process64_xposed
+  LOCAL_MODULE_STEM_32 := app_process32_ya
+  LOCAL_MODULE_STEM_64 := app_process64_ya
 else
   LOCAL_SRC_FILES := app_main.cpp
   LOCAL_MODULE_STEM := app_process_xposed
