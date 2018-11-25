@@ -35,7 +35,7 @@ ifeq (1,$(strip $(shell expr $(PLATFORM_SDK_VERSION) \>= 17)))
   LOCAL_CFLAGS += -DXPOSED_WITH_SELINUX=1
 endif
 
-LOCAL_MODULE := libxposed_dalvik
+LOCAL_MODULE := libyd
 LOCAL_MODULE_TAGS := optional
 LOCAL_STRIP_MODULE := keep_symbols
 

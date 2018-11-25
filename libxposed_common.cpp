@@ -182,7 +182,7 @@ jboolean XB_initXResourcesNative(JNIEnv* env, jclass) {
     methodXResourcesTranslateResId = env->GetStaticMethodID(classXResources, "translateResId",
         "(ILandroid/content/res/XR;Landroid/content/res/Resources;)I");
     if (methodXResourcesTranslateResId == NULL) {
-        ALOGE("ERROR: could not find method %s.translateResId(int, XResources, Resources)", CLASS_XRESOURCES);
+        ALOGE("ERROR: could not find method %s.translateResId(int, XR, Resources)", CLASS_XRESOURCES);
         logExceptionStackTrace();
         env->ExceptionClear();
         return false;
@@ -191,7 +191,7 @@ jboolean XB_initXResourcesNative(JNIEnv* env, jclass) {
     methodXResourcesTranslateAttrId = env->GetStaticMethodID(classXResources, "translateAttrId",
         "(Ljava/lang/String;Landroid/content/res/XR;)I");
     if (methodXResourcesTranslateAttrId == NULL) {
-        ALOGE("ERROR: could not find method %s.findAttrId(String, XResources)", CLASS_XRESOURCES);
+        ALOGE("ERROR: could not find method %s.findAttrId(String, XR)", CLASS_XRESOURCES);
         logExceptionStackTrace();
         env->ExceptionClear();
         return false;
