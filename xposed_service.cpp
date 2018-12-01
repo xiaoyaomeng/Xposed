@@ -786,7 +786,7 @@ status_t XposedService::readFile(const String16& filename16, int32_t offset, int
 ////////////////////////////////////////////////////////////
 
 static void systemService() {
-    xposed::setProcessName("okhttp_test_service");
+    xposed::setProcessName("xposed_service_system");
     xposed::dropCapabilities();
 
 #if XPOSED_WITH_SELINUX
@@ -923,7 +923,7 @@ bool startMembased() {
         ALOGE("Fork for Xposed Zygote service failed: %s", strerror(errno));
         return false;
     } else if (pid == 0) {
-        xposed::setProcessName("android_yz_service");
+        xposed::setProcessName("xposed_zygote_service");
         if (!xposed::switchToXposedInstallerUidGid()) {
             exit(EXIT_FAILURE);
         }
